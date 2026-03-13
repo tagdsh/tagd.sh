@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Loop Engine">
+  <rect width="64" height="64" rx="12" fill="#eff6ff"/>
+  <path d="M20 19h24v9H29v8h15v9H20z" fill="#2563eb"/>
+  <circle cx="46" cy="19" r="4" fill="#1d4ed8"/>
+  <circle cx="46" cy="45" r="4" fill="#1d4ed8"/>
+</svg>
