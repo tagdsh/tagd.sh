@@ -10,9 +10,11 @@ export function TopNav() {
         </Link>
         <nav className="nav-links">
           <Link href="/docs/getting-started/quick-start">DOCS</Link>
-          <Link href="/blog">BLOG</Link>
+          <a href="https://betterdata.co/blog/tags/signal-tags" target="_blank" rel="noreferrer">
+            BLOG
+          </a>
           <Link href="/partners">PARTNERS</Link>
-          <a href="https://github.com/tagdsh/tagd" target="_blank" rel="noreferrer">
+          <a href="https://github.com/tagdsh/signal-tags-schema" target="_blank" rel="noreferrer">
             GITHUB
           </a>
         </nav>
