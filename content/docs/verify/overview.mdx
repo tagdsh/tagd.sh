@@ -1,0 +1,40 @@
+---
+title: "Verification Overview"
+description: "Protocol, client behavior, and response format for Signal Tags verification."
+section: "Verify"
+---
+
+## Verify protocol
+
+Verification is a simple HTTP GET to any compliant endpoint.
+
+```http
+GET /verify/{tagId}
+```
+
+## VerificationResponse shape
+
+- `status`
+- `tag`
+- `verifiedAt`
+- `endpoint`
+
+<VerifiedBadge />
+
+## Verify client
+
+```ts
+import { createVerifyClient } from '@signal-tags/verify'
+
+const client = createVerifyClient({ endpoint: 'https://verify.betterdata.co' })
+const response = await client.verify('st_example_001')
+```
+
+## Self-host vs hosted
+
+<SelfHostBadge /> run your own endpoint and keep full infrastructure control.
+
+<HostedBadge /> use Better Data managed infrastructure with no endpoint operations overhead.
+
+- [Self-host guide](/docs/verify/self-host)
+- [Better Data API](/docs/verify/better-data-api)

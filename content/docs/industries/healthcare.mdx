@@ -1,0 +1,44 @@
+---
+title: "Healthcare & Medical Devices"
+description: "UDI-oriented medical device traceability with open verification records and recall workflows."
+section: "Industries"
+---
+
+<IndustryTag>Healthcare</IndustryTag>
+
+## Industry problem
+
+Medical device recalls and implant traceability require dependable device identity and custody records.
+Teams need interoperability across providers, hospitals, and suppliers.
+
+## How Signal Tags helps
+
+Use schema base fields plus metadata for `udi`, `sterilization_date`, `implant_site`, and manufacturer references.
+
+## Regulatory context
+
+- FDA UDI (US)
+- EU MDR (Europe)
+
+Technical guidance only; not legal advice.
+
+## Code example
+
+```ts
+const deviceTag = {
+  id: 'st_01HEALTH001',
+  status: 'verified',
+  productId: 'device_implant_hip_42',
+  organizationId: 'org_medtech',
+  createdAt: '2026-03-01T12:00:00Z',
+  metadata: {
+    udi: '(01)00850032000012(17)280101(10)LOT-4429',
+    sterilization_date: '2026-02-26',
+    implant_site: 'left-hip',
+  },
+}
+```
+
+## Loop Engine integration
+
+Recall signals can trigger a governed patient-notification and provider-response loop.

@@ -1,0 +1,40 @@
+---
+title: "Core Concepts"
+description: "Signal Tags concepts: IDs, verification model, and OSS boundary."
+section: "Getting Started"
+---
+
+## What is a Signal Tag
+
+A Signal Tag is a scannable identifier that resolves to a verifiable record.
+The physical carrier (QR, NFC, barcode) only transports the ID.
+The ID anchors verification to a canonical record.
+
+## The verification model
+
+- Tag IDs are permanent references.
+- Verification records can update lifecycle status (for example: `recalled`, `expired`).
+- Verification is endpoint-compatible: any compliant endpoint can respond deterministically.
+
+## OSS and hosted boundary
+
+- Schema and verification protocol are OSS under MIT.
+- Better Data provides managed verification infrastructure as an optional hosted service.
+- Any HTTPS endpoint implementing the protocol can be used with the verify client.
+
+## Signal Tags + Loop Engine
+
+Product authentication is a loop:
+
+`Scan → Verify → (if failed) quarantine loop → resolution`
+
+Loop Engine governs multi-actor response workflows and audit trails.
+
+- [Visit Loop Engine](https://loopengine.io)
+
+## Signal Tags + Commerce Chain
+
+Authenticity events act as commerce chain signals.
+A recalled tag can trigger downstream supply chain response loops.
+
+- [Commerce Chain](https://commercechain.io)

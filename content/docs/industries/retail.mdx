@@ -1,0 +1,43 @@
+---
+title: "Retail & Luxury Goods"
+description: "Anti-counterfeit verification for retail and luxury goods with open tag contracts."
+section: "Industries"
+---
+
+<IndustryTag>Retail</IndustryTag>
+
+## Industry problem
+
+Luxury brands face high counterfeit volume, gray market diversion, and trust erosion.
+Authentication has to work for both enterprise operations and end-customer scans.
+
+## How Signal Tags helps
+
+Base fields maintain stable identity while metadata captures:
+`gtin`, `authenticity_certificate`, and provenance references.
+
+## Regulatory context
+
+Consumer protection and market surveillance obligations vary by jurisdiction.
+Always map implementation to regional legal requirements.
+
+## Code example
+
+```ts
+const retailTag = {
+  id: 'st_01LUX001',
+  status: 'verified',
+  productId: 'lux_handbag_model_x',
+  organizationId: 'org_luxury_house',
+  createdAt: '2026-03-02T08:15:00Z',
+  metadata: {
+    gtin: '09506000123452',
+    authenticity_certificate: 'CERT-2026-LUX-111',
+    provenance_events: ['factory_release', 'boutique_receipt'],
+  },
+}
+```
+
+## Commerce Gateway integration
+
+Verified tags can be linked into Commerce Gateway product detail and fulfillment surfaces.

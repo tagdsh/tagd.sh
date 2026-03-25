@@ -1,0 +1,45 @@
+---
+title: "Food & Beverage Traceability"
+description: "Farm-to-shelf traceability and recall readiness using open Signal Tags verification patterns."
+section: "Industries"
+---
+
+<IndustryTag>Food & Beverage</IndustryTag>
+
+## Industry problem
+
+Food safety recalls demand rapid lot-level verification and transparent supply context.
+Disconnected systems slow response time and increase waste.
+
+## How Signal Tags helps
+
+Use stable schema fields with metadata extensions for `harvest_date`, `origin_location`, and certifications.
+
+## Regulatory context
+
+- FSMA (US)
+- EU food safety frameworks
+
+Technical guidance only; not legal advice.
+
+## Code example
+
+```ts
+const produceTag = {
+  id: 'st_01FOOD001',
+  status: 'in_transit',
+  productId: 'produce_blueberries_6oz',
+  organizationId: 'org_farm_coop',
+  createdAt: '2026-03-08T05:20:00Z',
+  lotId: 'LOT-BB-0308',
+  metadata: {
+    harvest_date: '2026-03-07',
+    origin_location: 'Salinas, CA',
+    certifications: ['GlobalG.A.P.', 'USDA Organic'],
+  },
+}
+```
+
+## Loop Engine integration
+
+Contamination alerts can trigger a recall loop with hold, notification, and verification steps.

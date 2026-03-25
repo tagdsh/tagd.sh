@@ -1,0 +1,21 @@
+---
+title: "Self-Host"
+description: "Run a compliant verification endpoint in your own infrastructure."
+section: "Verify"
+---
+
+## Self-hosting model
+
+Implement the verify route in your own service and return schema-valid payloads.
+
+### Minimal route contract
+
+- Endpoint: `GET /verify/{tagId}`
+- Response: `VerificationResponse`
+- Content type: `application/json`
+
+### Recommended controls
+
+- Signed audit logs for every verification response.
+- Rate limiting and abuse monitoring.
+- Deterministic status logic for equivalent input payloads.

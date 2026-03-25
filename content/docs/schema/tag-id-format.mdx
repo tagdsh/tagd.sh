@@ -1,0 +1,28 @@
+---
+title: "Tag ID Format"
+description: "Signal Tag identifier format and generation recommendations."
+section: "Schema"
+---
+
+## Tag ID format
+
+Signal Tags recommends a prefixed identifier style:
+
+`st_<opaque-id>`
+
+Examples:
+
+- `st_01HZXK7M2N3P4Q5R6S7T8U9V`
+- `st_example_001`
+
+## Rules
+
+- Prefix with `st_`.
+- Use globally unique opaque IDs.
+- Avoid embedding direct PII or sensitive business data in the ID.
+
+## Verify resolution
+
+The ID resolves through a verify endpoint pattern such as:
+
+`GET /verify/{tagId}`

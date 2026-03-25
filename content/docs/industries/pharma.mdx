@@ -1,0 +1,48 @@
+---
+title: "Pharmaceutical Serialization"
+description: "DSCSA-aligned drug supply chain verification with Signal Tags and open schema contracts."
+section: "Industries"
+---
+
+<IndustryTag>Pharma</IndustryTag>
+
+## Industry problem
+
+Drug counterfeiting and diversion create patient safety risk and operational exposure.
+Serialization workflows require reliable verification at dispense and saleable returns checkpoints.
+
+## How Signal Tags helps
+
+Use base fields for identity and lifecycle, then add regulated attributes through metadata:
+`ndc`, `lot`, `expiry`, `manufacturer`, and optional `dea_schedule`.
+
+## Regulatory context
+
+- DSCSA (United States)
+- EU FMD (Europe)
+- Saleable Returns Verification requirements
+
+This page is technical guidance only, not legal advice.
+
+## Code example
+
+```ts
+const pharmaTag = {
+  id: 'st_01PHARMA001',
+  status: 'manufactured',
+  productId: 'drug_amoxicillin_500mg',
+  organizationId: 'did:web:pfizer.com',
+  createdAt: '2026-03-12T10:00:00Z',
+  lotId: 'LOT-2026-PHA-17',
+  metadata: {
+    ndc: '00093-4175-10',
+    expiry: '2027-01-31',
+    manufacturer: 'Pfizer Inc.',
+    dea_schedule: 'none',
+  },
+}
+```
+
+## Loop Engine integration
+
+A recalled tag can trigger a quarantine loop and downstream destruction or return workflows in Loop Engine.

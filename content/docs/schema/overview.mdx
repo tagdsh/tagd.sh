@@ -1,0 +1,60 @@
+---
+title: "Schema Overview"
+description: "The Signal Tags schema defines product identity, provenance, and verification state."
+section: "Schema"
+---
+
+## Schema philosophy
+
+Signal Tags is TypeScript-first with JSON-native contracts.
+The source of truth is JSON Schema; typed interfaces mirror those contracts.
+
+## Top-level fields
+
+<table>
+  <thead>
+    <tr><th>Name</th><th>Type</th><th>Required</th><th>Description</th></tr>
+  </thead>
+  <tbody>
+    <SchemaField name="id" type="string" required="yes" description="Unique SignalTag identifier." />
+    <SchemaField name="status" type="enum" required="yes" description="Lifecycle state for the tag." />
+    <SchemaField name="productId" type="string" required="yes" description="Product reference identifier." />
+    <SchemaField name="organizationId" type="string" required="yes" description="Tenant/issuer scope owner." />
+    <SchemaField name="createdAt" type="date-time" required="yes" description="Creation timestamp." />
+    <SchemaField name="lotId" type="string" required="no" description="Optional lot linkage." />
+    <SchemaField name="batchId" type="string" required="no" description="Optional batch linkage." />
+    <SchemaField name="metadata" type="object" required="no" description="Industry extension object." />
+    <SchemaField name="expiresAt" type="date-time" required="no" description="Optional expiry timestamp." />
+    <SchemaField name="revokedAt" type="date-time" required="no" description="Optional revocation timestamp." />
+  </tbody>
+</table>
+
+## Product attributes
+
+Signal Tags keeps core fields stable and uses `metadata` extensions for domain-specific attributes such as:
+
+- `gtin`, `name`, `manufacturer`
+- `udi` (healthcare)
+- `ndc` (pharma)
+
+## Status values
+
+- `manufactured`
+- `in_transit`
+- `received`
+- `verified`
+- `recalled`
+- `expired`
+- `revoked`
+
+## Events and chain of custody
+
+The related `TraceEvent` schema tracks custody and lifecycle transitions with fields like:
+`eventType`, `occurredAt`, `locationId`, `actorId`, and optional metadata.
+
+## Extending the schema
+
+Industry add-ons should be additive and backward-compatible:
+
+- Put optional extensions under `metadata`.
+- Keep base fields stable for cross-endpoint compatibility.

@@ -1,65 +1,129 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Link from "next/link";
+import Script from "next/script";
+import { Hero } from "@/components/home/Hero";
+import { HowItWorks } from "@/components/home/HowItWorks";
+import { Industries } from "@/components/home/Industries";
+import { VerifyDemo } from "@/components/home/VerifyDemo";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "Signal Tags OSS",
+  description:
+    "Physical products. Verifiable everywhere. Open schema and verification protocol for authentication.",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      name: "Signal Tags",
+      url: "https://tagd.sh",
+      applicationCategory: "DeveloperApplication",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    },
+    {
+      "@type": "WebSite",
+      name: "tagd.sh",
+      url: "https://tagd.sh",
+    },
+  ],
+};
+
+export default function HomePage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main>
+      <Script
+        id="home-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Hero />
+      <section className="section">
+        <div className="content-grid">
+          <h2>Counterfeits cost $500B annually. Most tags can&apos;t be verified.</h2>
+          <div className="two-col">
+            <div>
+              <h3>The problem</h3>
+              <ul>
+                <li>Standard QR codes can point anywhere and are easy to clone.</li>
+                <li>Barcodes usually provide lookup only, not tamper evidence.</li>
+                <li>Proprietary NFC often creates vendor lock-in.</li>
+                <li>Paper certificates are easy to lose or forge.</li>
+              </ul>
+            </div>
+            <div>
+              <h3>The Signal Tags model</h3>
+              <ul>
+                <li>Open schema, deterministic verification behavior.</li>
+                <li>Any scanner can resolve and check a verification record.</li>
+                <li>Self-hosted or hosted endpoint support with no lock-in.</li>
+                <li>Plugs into Loop Engine for governed remediation workflows.</li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </section>
+
+      <HowItWorks />
+      <Industries />
+
+      <section className="section">
+        <div className="content-grid">
+          <h2>The Signal Tag schema</h2>
+          <p className="section-subtitle">Open, typed, and versioned.</p>
+          <pre className="code-block"><code>{`import { SignalTagSchema } from '@signal-tags/schema'
+
+const tag = SignalTagSchema.parse({
+  id: 'st_example_001',
+  status: 'manufactured',
+  productId: 'prod_amoxicillin_500mg',
+  organizationId: 'did:web:pfizer.com',
+  createdAt: '2024-11-01T08:00:00Z',
+  lotId: 'LOT-2024-A1847',
+  batchId: 'BATCH-2024-11',
+  metadata: {
+    gtin: '00312547691215',
+    name: 'Amoxicillin 500mg Capsules',
+    ndc: '00093-4175-10',
+    verifyUrl: 'https://verify.betterdata.co/st/st_example_001',
+  },
+})`}</code></pre>
+          <Link href="/docs/schema/overview" className="text-link">
+            Full schema reference →
+          </Link>
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section className="section">
+        <div className="content-grid two-col">
+          <div className="panel">
+            <h3>Self-hosted</h3>
+            <p>Run your own verification endpoint. MIT licensed.</p>
+            <ul>
+              <li>Full schema OSS</li>
+              <li>Self-hostable verify API</li>
+              <li>No lock-in</li>
+            </ul>
+            <Link href="/docs/verify/self-host" className="text-link">
+              Read self-host guide →
+            </Link>
+          </div>
+          <div className="panel panel-hosted">
+            <h3>Better Data Hosted</h3>
+            <p>Managed verification at scale with compliance-focused operations.</p>
+            <ul>
+              <li>High-availability verify API</li>
+              <li>Tag management portal</li>
+              <li>DSCSA / EU FMD reporting paths</li>
+              <li>Optional blockchain anchoring layer</li>
+            </ul>
+            <a href="https://betterdata.co" className="text-link">Contact Better Data →</a>
+          </div>
+        </div>
+      </section>
+
+      <VerifyDemo />
+    </main>
   );
 }

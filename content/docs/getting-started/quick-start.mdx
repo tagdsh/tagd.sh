@@ -1,0 +1,58 @@
+---
+title: "Quick Start"
+description: "Issue your first Signal Tag and verify it in under 5 minutes."
+section: "Getting Started"
+---
+
+## 1. Install
+
+```bash
+npm install @signal-tags/sdk
+```
+
+## 2. Generate a tag ID
+
+```ts
+import { generateTagId } from '@signal-tags/generate'
+
+const id = generateTagId() // st_01HZXK7M2N3P4Q5R6S7T8U9V
+```
+
+## 3. Create a tag record
+
+```ts
+import { SignalTagSchema } from '@signal-tags/schema'
+
+const tag = SignalTagSchema.parse({
+  id,
+  status: 'manufactured',
+  productId: 'prod_example_001',
+  organizationId: 'org_example',
+  createdAt: new Date().toISOString(),
+  lotId: 'lot_001',
+  batchId: 'batch_001',
+  metadata: {
+    gtin: '00312547691215',
+    name: 'Amoxicillin 500mg Capsules',
+    ndc: '00093-4175-10',
+  },
+})
+```
+
+## 4. Verify a tag
+
+```ts
+import { createVerifyClient } from '@signal-tags/verify'
+
+const client = createVerifyClient({ endpoint: 'https://verify.betterdata.co' })
+const result = await client.verify('st_01HZXK7M2N3P4Q5R6S7T8U9V')
+
+// result.status:
+// 'authentic' | 'tampered' | 'expired' | 'recalled' | 'unknown'
+```
+
+## 5. Next steps
+
+- [Schema overview](/docs/schema/overview)
+- [Verification overview](/docs/verify/overview)
+- [Industry guides](/docs/industries/pharma)

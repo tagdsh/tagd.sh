@@ -1,0 +1,26 @@
+---
+title: "Tag Anatomy"
+description: "The components of a Signal Tag identifier and linked verification record."
+section: "Getting Started"
+---
+
+## Tag anatomy
+
+A Signal Tag consists of:
+
+1. Carrier: QR, NFC, or barcode.
+2. Identifier: `st_*` value encoded in the carrier.
+3. Verify endpoint: URL pattern resolving that identifier.
+4. Record: schema-valid JSON payload tied to lifecycle status and events.
+
+## Minimal payload fields
+
+| Field | Purpose |
+| --- | --- |
+| `id` | Unique tag identifier |
+| `status` | Lifecycle state |
+| `productId` | Product reference |
+| `organizationId` | Issuer scope |
+| `createdAt` | Creation timestamp |
+
+Use metadata extensions for industry-specific fields without breaking base compatibility.

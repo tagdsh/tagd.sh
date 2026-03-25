@@ -1,0 +1,18 @@
+---
+title: "Overview"
+description: "Generate Signal Tag IDs and payloads for compliant verification flows."
+section: "Generate"
+---
+
+## Generation workflow
+
+1. Generate unique `st_*` ID.
+2. Create schema-valid record.
+3. Encode ID into QR/NFC/barcode carrier.
+4. Publish record to verification endpoint.
+
+```ts
+import { generateTagId } from '@signal-tags/generate'
+
+const id = generateTagId()
+```

@@ -1,0 +1,44 @@
+---
+title: "Construction Materials"
+description: "Materials compliance and certification tracking for structural components with Signal Tags."
+section: "Industries"
+---
+
+<IndustryTag>Construction</IndustryTag>
+
+## Industry problem
+
+Substandard materials and certificate fraud can create critical safety exposure.
+Teams need auditable proof of grade and testing at install time.
+
+## How Signal Tags helps
+
+Base schema fields provide immutable references while metadata captures:
+`material_grade`, `certification_body`, `test_date`, and `batch_id`.
+
+## Regulatory context
+
+Requirements vary by region, project class, and code authority.
+Implementation should align with local code and contract obligations.
+
+## Code example
+
+```ts
+const steelTag = {
+  id: 'st_01CONSTR001',
+  status: 'received',
+  productId: 'steel_hbeam_w14x90',
+  organizationId: 'org_structural_supplier',
+  createdAt: '2026-03-09T16:40:00Z',
+  batchId: 'BATCH-STEEL-774',
+  metadata: {
+    material_grade: 'ASTM A992',
+    certification_body: 'UL',
+    test_date: '2026-03-01',
+  },
+}
+```
+
+## Loop Engine integration
+
+Failed inspections can trigger a materials-hold and remediation loop.
