@@ -40,4 +40,8 @@ export const docsNav = [
       { title: "Construction", slug: "industries/construction" },
     ],
   },
+  {
+    section: "Project",
+    items: [{ title: "Changelog", slug: "changelog" }],
+  },
 ] as const;

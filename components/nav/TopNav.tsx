@@ -13,6 +13,12 @@ export function TopNav() {
           <a href="https://betterdata.co/blog/tags/signal-tags" target="_blank" rel="noreferrer">
             BLOG
           </a>
+          <a href="https://betterdata.co/changelog?module=signal-tags" target="_blank" rel="noreferrer">
+            CHANGELOG
+          </a>
+          <a href="https://github.com/tagdsh/signal-tags-schema/releases" target="_blank" rel="noreferrer">
+            RELEASES
+          </a>
           <Link href="/partners">PARTNERS</Link>
           <a href="https://github.com/tagdsh/signal-tags-schema" target="_blank" rel="noreferrer">
             GITHUB

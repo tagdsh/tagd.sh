@@ -1,0 +1,27 @@
+---
+title: "Changelog"
+description: "All notable changes to Signal Tags"
+section: "Project"
+---
+
+{/* Synced from signal-tags-schema/CHANGELOG.md — update both when releasing */}
+
+All notable changes to Signal Tags Schema will be documented here.
+
+Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/)
+Versioning: [Semantic Versioning](https://semver.org/)
+
+## [0.1.0] — 2026-03-11
+
+### Added
+
+- Initial public release of `@betterdata/signal-tags-schema`
+- JSON Schema v0.1 definitions: `signal-tag`, `trace-event`, `product-identifier`, and `lot` (fixtures and `scripts/validate-fixtures.js` for validation)
+- TypeScript entrypoint (`src/index.ts`) exporting `SCHEMA_VERSION`, `SignalTagStatus`, and `TraceEventType` aligned with the JSON schemas
+- Hardware-anchored product authentication model via the Signal Tag record schema (lifecycle statuses including `manufactured`, `in_transit`, `received`, `verified`, `recalled`, `expired`, `revoked`)
+- Chain-of-custody and traceability via `trace-event` (event types such as `manufacture`, `custody_transfer`, `scan_verify`, `lot_creation`, `recall_initiated`, and related flows)
+- Adapter notes for EPCIS and Firefly mappings under `adapters/`
+- Vitest conformance tests under `tests/conformance/`
+- Apache-2.0 license
+
+[0.1.0]: https://github.com/tagdsh/signal-tags-schema/releases/tag/v0.1.0
