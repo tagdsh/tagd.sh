@@ -116,7 +116,7 @@ const tag = SignalTagSchema.parse({
               <li>High-availability verify API</li>
               <li>Tag management portal</li>
               <li>DSCSA / EU FMD reporting paths</li>
-              <li>Optional blockchain anchoring layer</li>
+              <li>Optional anchoring for compliance records</li>
             </ul>
             <a href="https://betterdata.co" className="text-link">Contact Better Data →</a>
           </div>
