@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
+import type { ComponentProps } from "react";
 import type { MDXComponents as MDXComponentMap } from "mdx/types";
+import { headingId } from "@/lib/docs";
 import { CodeBlock } from "@/components/docs/CodeBlock";
 
 type BadgeProps = { children: ReactNode };
@@ -46,6 +48,8 @@ export function SchemaField({
 }
 
 export const MDXComponents: MDXComponentMap = {
+  h2: ({ children }: ComponentProps<"h2">) => <h2 id={headingId(String(children ?? ""))}>{children}</h2>,
+  h3: ({ children }: ComponentProps<"h3">) => <h3 id={headingId(String(children ?? ""))}>{children}</h3>,
   pre: (props) => <CodeBlock {...props} />,
   VerifiedBadge,
   SelfHostBadge,
@@ -53,3 +57,5 @@ export const MDXComponents: MDXComponentMap = {
   IndustryTag,
   SchemaField,
 };
+
+export const mdxComponents = MDXComponents;

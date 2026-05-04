@@ -34,6 +34,24 @@ export function trackDocsViewed(args: {
   });
 }
 
+export function trackDocsPageView(args: { slug: string; title: string }) {
+  capture("docs_page_view", {
+    page_type: "docs",
+    doc_slug: args.slug,
+    doc_title: args.title,
+    slug: args.slug,
+    title: args.title,
+  });
+}
+
+export function trackDocsEditClicked(args: { filePath: string; destination: string }) {
+  capture("edit_clicked", {
+    page_type: "docs",
+    file_path: args.filePath,
+    destination: args.destination,
+  });
+}
+
 export function trackOutboundClicked(args: {
   label: string;
   destination: string;

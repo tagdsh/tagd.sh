@@ -7,9 +7,9 @@ import { Industries } from "@/components/home/Industries";
 import { VerifyDemo } from "@/components/home/VerifyDemo";
 
 export const metadata: Metadata = {
-  title: "Signal Tags OSS",
+  title: "Signal Tags OSS (experimental)",
   description:
-    "Physical products. Verifiable everywhere. Open schema and verification protocol for authentication.",
+    "Physical products. Verifiable everywhere. Experimental open-source schema and verification protocol; APIs and behavior may change.",
 };
 
 const jsonLd = {

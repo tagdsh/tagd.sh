@@ -8,9 +8,10 @@ function priorityFor(slug: string): number {
   return 0.7;
 }
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
-  const docRoutes = getAllDocSlugs().map((slug) => ({
+  const docSlugs = await getAllDocSlugs();
+  const docRoutes = docSlugs.map((slug) => ({
     url: `https://tagd.sh/docs/${slug}`,
     lastModified: now,
     priority: priorityFor(slug),
@@ -18,6 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     { url: "https://tagd.sh", lastModified: now, priority: 1.0 },
+    { url: "https://tagd.sh/partners", lastModified: now, priority: 0.75 },
     ...docRoutes,
   ];
 }
