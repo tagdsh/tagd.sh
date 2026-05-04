@@ -17,6 +17,10 @@
 /.next/
 /out/
 
+# pagefind generated bundle (created by post-build pagefind CLI)
+public/pagefind
+
+
 # production
 /build
 

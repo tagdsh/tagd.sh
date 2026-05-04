@@ -52,6 +52,33 @@ export function trackDocsEditClicked(args: { filePath: string; destination: stri
   });
 }
 
+export function trackDocsSearchOpened(args: {
+  source: "keyboard" | "sidebar" | "header";
+  path: string;
+}) {
+  capture("docs_search_opened", {
+    page_type: "docs",
+    source: args.source,
+    path: args.path,
+  });
+}
+
+export function trackDocsSearchQuery(args: { queryLength: number; querySample: string }) {
+  capture("docs_search_query", {
+    page_type: "docs",
+    query_length: args.queryLength,
+    query_sample: args.querySample,
+  });
+}
+
+export function trackDocsSearchResultClicked(args: { destination: string; rank: number }) {
+  capture("docs_search_result_clicked", {
+    page_type: "docs",
+    destination: args.destination,
+    result_rank: args.rank,
+  });
+}
+
 export function trackOutboundClicked(args: {
   label: string;
   destination: string;

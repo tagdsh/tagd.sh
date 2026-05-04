@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import type { DocNavSection } from "@/lib/docs";
+import { DOCS_SEARCH_OPEN_EVENT } from "@/lib/docs-search-events";
 
 function isActive(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -28,7 +29,27 @@ export function DocsSidebar({ sections }: { sections: DocNavSection[] }) {
 
   return (
     <aside className="docs-sidebar">
-      <details open>
+      <p className="mono text-xs uppercase tracking-wide" style={{ color: "var(--muted, #64748b)" }}>
+        Search
+      </p>
+      <button
+        type="button"
+        className="mb-3 w-full rounded border px-2 py-1.5 text-left text-sm"
+        style={{
+          borderColor: "var(--border, #e2e8f0)",
+          color: "var(--color-ink-secondary, #475569)",
+          background: "var(--color-surface-alt, #f8fafc)",
+          cursor: "pointer",
+        }}
+        onClick={() =>
+          window.dispatchEvent(
+            new CustomEvent(DOCS_SEARCH_OPEN_EVENT, { detail: { source: "sidebar" } }),
+          )
+        }
+      >
+        Open search <span style={{ opacity: 0.7 }}>⌘K</span>
+      </button>
+      <details open className="mt-4">
         <summary>Documentation</summary>
         <input
           type="search"

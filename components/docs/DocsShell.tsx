@@ -22,7 +22,7 @@ export function DocsShell({
 }) {
   return (
     <div className="not-prose flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-10">
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1" data-pagefind-body>
         <header className="mb-8 flex flex-wrap items-start justify-between gap-4">
           <div>
             <p className="mono text-xs uppercase tracking-wide" style={{ color: "var(--accent, #2563eb)" }}>

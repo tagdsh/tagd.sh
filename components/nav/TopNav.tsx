@@ -5,10 +5,17 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { inferPageType } from "@/lib/analytics/posthog";
 import { trackCtaClicked, trackOutboundClicked } from "@/lib/analytics/events";
+import { DOCS_SEARCH_OPEN_EVENT } from "@/lib/docs-search-events";
 
 export function TopNav() {
   const pathname = usePathname();
   const pageType = inferPageType(pathname);
+
+  const openDocsSearch = () => {
+    window.dispatchEvent(
+      new CustomEvent(DOCS_SEARCH_OPEN_EVENT, { detail: { source: "header" as const } }),
+    );
+  };
 
   return (
     <header className="top-nav">
@@ -17,6 +24,24 @@ export function TopNav() {
           <Image src="/logo.svg" alt="tagd.sh" width={140} height={34} priority />
         </Link>
         <nav className="nav-links">
+          {pathname.startsWith("/docs") ? (
+            <button
+              type="button"
+              className="mono"
+              style={{
+                fontSize: "var(--text-sm)",
+                letterSpacing: "0.06em",
+                color: "var(--color-ink-tertiary)",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                padding: 0,
+              }}
+              onClick={openDocsSearch}
+            >
+              SEARCH <span style={{ opacity: 0.7 }}>⌘K</span>
+            </button>
+          ) : null}
           <Link
             href="/docs/getting-started/quick-start"
             data-ph-cta="view_docs"
