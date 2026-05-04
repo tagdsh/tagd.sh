@@ -31,6 +31,10 @@ export const docsNav = [
     ],
   },
   {
+    section: "Integrations",
+    items: [{ title: "Loop Engine", slug: "integrations/loop-engine" }],
+  },
+  {
     section: "Industries",
     items: [
       { title: "Pharmaceutical", slug: "industries/pharma" },

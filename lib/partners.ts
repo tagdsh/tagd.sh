@@ -30,7 +30,7 @@ export const ecosystemPartners: Partner[] = [
       "A recalled or failed tag verification triggers a governed Loop Engine compliance loop — quarantine, investigation, resolution.",
     integrationType: "ecosystem",
     externalUrl: "https://loopengine.io",
-    docsPath: "/docs",
+    docsPath: "/docs/integrations/loop-engine",
   },
   {
     name: "Commerce Chain",

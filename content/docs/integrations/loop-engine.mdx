@@ -1,0 +1,82 @@
+---
+title: Loop Engine Integration
+description: Use Loop Engine to govern Signal Tags remediation workflows — recalled tags, custody disputes, and verification failures.
+---
+
+# Loop Engine Integration
+
+Signal Tags detects status changes — recalled, tampered, expired, unknown.
+Loop Engine governs what happens next.
+
+When a tag scan returns a non-authentic result, a Loop Engine loop can:
+
+- Record the event as a governed transition with actor attribution
+- Route to a human reviewer for investigation
+- Enforce policy guards before any remediation action executes
+- Emit an immutable evidence trail for compliance and audit
+
+## The pattern
+
+```text
+Tag scan → non-authentic result
+  ↓
+Signal Tags emits verification failure event
+  ↓
+Loop Engine starts recall/remediation loop
+  → state: FLAGGED
+  → AI actor queries product record, supply chain history
+  → guard: confidence_threshold (is this a real tampering or a false positive?)
+  → human approval gate if confidence < 0.90
+  → state: REMEDIATION_IN_PROGRESS or CLEARED
+  ↓
+Outcome record: full audit trail of the verification event and response
+```
+
+## Quick setup
+
+```typescript
+import { validateLoopDefinition } from '@loop-engine/sdk'
+
+const recallLoop = validateLoopDefinition({
+  id: 'signal-tags.recall-response',
+  name: 'Signal Tags Recall Response',
+  version: '1.0.0',
+  tags: ['signal-tags', 'compliance'],
+  initialState: 'FLAGGED',
+  states: [
+    { stateId: 'FLAGGED' },
+    { stateId: 'UNDER_REVIEW' },
+    { stateId: 'CLEARED', terminal: true },
+    { stateId: 'CONFIRMED_RECALL', terminal: true }
+  ],
+  transitions: [
+    {
+      transitionId: 'escalate_to_review',
+      signal: 'escalate_to_review',
+      from: 'FLAGGED',
+      to: 'UNDER_REVIEW',
+      allowedActors: ['ai_agent', 'automation']
+    },
+    {
+      transitionId: 'clear',
+      signal: 'clear',
+      from: 'UNDER_REVIEW',
+      to: 'CLEARED',
+      allowedActors: ['human']
+    },
+    {
+      transitionId: 'confirm_recall',
+      signal: 'confirm_recall',
+      from: 'UNDER_REVIEW',
+      to: 'CONFIRMED_RECALL',
+      allowedActors: ['human']
+    }
+  ]
+})
+```
+
+## Resources
+
+- [Loop Engine →](https://loopengine.io)
+- [Guards and Policy →](https://loopengine.io/docs/concepts/guards-and-policy)
+- [Human Approval Gates →](https://loopengine.io/docs/ai-and-automation/human-approval-gates)

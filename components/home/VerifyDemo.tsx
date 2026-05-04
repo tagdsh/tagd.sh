@@ -35,6 +35,10 @@ export function VerifyDemo() {
           <p>
             Result status: <strong>{status}</strong>
           </p>
+          <p className="verify-demo-hint">
+            Local demo — no API call. Change the suffix to <code>A</code> (authentic), <code>T</code> (tampered),{" "}
+            <code>E</code> (expired), or <code>R</code> (recalled).
+          </p>
         </div>
       </div>
     </section>

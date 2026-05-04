@@ -58,7 +58,13 @@ export default function HomePage() {
                 <li>Open schema, deterministic verification behavior.</li>
                 <li>Any scanner can resolve and check a verification record.</li>
                 <li>Self-hosted or hosted endpoint support with no lock-in.</li>
-                <li>Plugs into Loop Engine for governed remediation workflows.</li>
+                <li>
+                  Plugs into{" "}
+                  <a href="https://loopengine.io" target="_blank" rel="noopener noreferrer" className="text-link">
+                    Loop Engine
+                  </a>{" "}
+                  for governed remediation workflows.
+                </li>
               </ul>
             </div>
           </div>
