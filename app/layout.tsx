@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { DM_Sans, DM_Serif_Display, JetBrains_Mono } from "next/font/google";
 import { Footer } from "@/components/home/Footer";
+import { EcosystemBanner } from "@/components/site/EcosystemBanner";
 import { PostHogProvider } from "@/components/analytics/PostHogProvider";
 import { TopNav } from "@/components/nav/TopNav";
 import { DocsSearchModalHost } from "@/components/docs/DocsSearchModalHost";
@@ -62,6 +63,7 @@ export default function RootLayout({
         `}
         </Script>
         <PostHogProvider>
+          <EcosystemBanner />
           <TopNav />
           <DocsSearchModalHost />
           {children}

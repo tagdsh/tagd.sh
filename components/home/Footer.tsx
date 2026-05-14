@@ -1,4 +1,10 @@
 import Link from "next/link";
+import {
+  BETTERDATA_CCO_URL,
+  BETTERDATA_OPEN_INFRA_URL,
+  BETTERDATA_TRUST_SOLUTION_URL,
+  ECOSYSTEM_STRIP,
+} from "@/lib/betterdata-ecosystem";
 
 export function Footer() {
   return (
@@ -19,6 +25,15 @@ export function Footer() {
         </div>
         <div>
           <h4>Better Data</h4>
+          <a href={BETTERDATA_CCO_URL} target="_blank" rel="noopener noreferrer">
+            Commerce Chain Optimization (hosted)
+          </a>
+          <a href={BETTERDATA_OPEN_INFRA_URL} target="_blank" rel="noopener noreferrer">
+            Open operational infrastructure hub
+          </a>
+          <a href={BETTERDATA_TRUST_SOLUTION_URL} target="_blank" rel="noopener noreferrer">
+            Trust &amp; traceability solutions
+          </a>
           <a href="https://www.betterdata.co/trust">Trust Center</a>
           <a href="https://betterdata.co">Created by Better Data</a>
           <a href="https://betterdata.co/docs">Platform docs</a>
@@ -32,6 +47,7 @@ export function Footer() {
         className="footer-bottom"
         style={{ flexDirection: "column", alignItems: "stretch" }}
       >
+        <p style={{ fontSize: "0.8rem", opacity: 0.95, marginBottom: "0.5rem", lineHeight: 1.5 }}>{ECOSYSTEM_STRIP}</p>
         <div style={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
           <span>MIT Licensed · © Signal Tags Contributors</span>
           <a href="mailto:conduct@tagd.sh">conduct@tagd.sh</a>
