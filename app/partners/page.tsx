@@ -11,7 +11,6 @@ export const metadata: Metadata = {
   title: "Partners — Signal Tags",
   description:
     "Signal Tags verification partners, the Better Data hosted API, and the Signal Tags partner program.",
-  robots: { index: false, follow: false },
 };
 
 const ecosystemAccent: Record<string, string> = {

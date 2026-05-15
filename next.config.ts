@@ -21,6 +21,7 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  transpilePackages: ["@betterdata/site-links"],
   pageExtensions: ["ts", "tsx", "md", "mdx"],
   turbopack: {
     root: __dirname,

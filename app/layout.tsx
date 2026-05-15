@@ -41,7 +41,6 @@ export const metadata: Metadata = {
   },
   description:
     "Signal Tags is an open schema and verification protocol for product authentication.",
-  robots: { index: false, follow: false },
 };
 
 export default function RootLayout({

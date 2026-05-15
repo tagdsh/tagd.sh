@@ -1,10 +1,18 @@
 import Link from "next/link";
+import { Fragment } from "react";
 import {
   BETTERDATA_CCO_URL,
   BETTERDATA_OPEN_INFRA_URL,
   BETTERDATA_TRUST_SOLUTION_URL,
   ECOSYSTEM_STRIP,
 } from "@/lib/betterdata-ecosystem";
+import {
+  BETTER_DATA_DOCS_FOOTER_SECONDARY_LINKS,
+  BETTER_DATA_ECOSYSTEM,
+  BETTER_DATA_LEGAL_FOOTER_LINKS,
+  BETTER_DATA_SUPPORT_FOOTER,
+} from "@betterdata/site-links";
+import { BetterDataFooterSocialIcons } from "@betterdata/site-links/social-icons";
 
 export function Footer() {
   return (
@@ -34,13 +42,48 @@ export function Footer() {
           <a href={BETTERDATA_TRUST_SOLUTION_URL} target="_blank" rel="noopener noreferrer">
             Trust &amp; traceability solutions
           </a>
-          <a href="https://www.betterdata.co/trust">Trust Center</a>
-          <a href="https://betterdata.co">Created by Better Data</a>
-          <a href="https://betterdata.co/docs">Platform docs</a>
+          <a href={BETTER_DATA_ECOSYSTEM.trustCenter}>Trust Center</a>
+          <a href={BETTER_DATA_ECOSYSTEM.marketingSite}>Created by Better Data</a>
+          <a href={BETTER_DATA_ECOSYSTEM.docsBrowse}>Platform docs</a>
           <a href="https://loopengine.io">Loop Engine</a>
           <a href="https://commercegateway.io">Commerce Gateway</a>
           <a href="https://commercechain.io">Commerce Chain</a>
           <a href="mailto:security@betterdata.co">security@betterdata.co</a>
+        </div>
+      </div>
+      <div
+        style={{
+          borderTop: "1px solid rgba(255,255,255,0.12)",
+          paddingTop: "1.25rem",
+          marginTop: "1.25rem",
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "1rem",
+          }}
+        >
+          <a href={BETTER_DATA_SUPPORT_FOOTER.href} target="_blank" rel="noopener noreferrer" style={{ fontSize: "0.9rem" }}>
+            {BETTER_DATA_SUPPORT_FOOTER.label}
+          </a>
+          <BetterDataFooterSocialIcons
+            navClassName="flex flex-wrap gap-2"
+            linkClassName="inline-flex h-10 w-10 items-center justify-center rounded-lg text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+          />
+        </div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem", fontSize: "0.85rem" }}>
+          {BETTER_DATA_DOCS_FOOTER_SECONDARY_LINKS.map((item) => (
+            <a key={item.href} href={item.href} target="_blank" rel="noopener noreferrer">
+              {item.label}
+            </a>
+          ))}
         </div>
       </div>
       <div
@@ -63,25 +106,14 @@ export function Footer() {
             gap: "0.15rem",
           }}
         >
-          <a href="https://www.betterdata.co/trust/security" target="_blank" rel="noopener noreferrer">
-            Security
-          </a>
-          <span aria-hidden="true"> · </span>
-          <a href="https://www.betterdata.co/privacy" target="_blank" rel="noopener noreferrer">
-            Privacy Policy
-          </a>
-          <span aria-hidden="true"> · </span>
-          <a href="https://www.betterdata.co/terms" target="_blank" rel="noopener noreferrer">
-            Terms of Service
-          </a>
-          <span aria-hidden="true"> · </span>
-          <a href="https://www.betterdata.co/cookies" target="_blank" rel="noopener noreferrer">
-            Cookie Notice
-          </a>
-          <span aria-hidden="true"> · </span>
-          <a href="https://www.betterdata.co/trust/open-source" target="_blank" rel="noopener noreferrer">
-            Open Source disclosures
-          </a>
+          {BETTER_DATA_LEGAL_FOOTER_LINKS.map((item, i) => (
+            <Fragment key={item.href}>
+              {i > 0 ? <span aria-hidden="true"> · </span> : null}
+              <a href={item.href} target="_blank" rel="noopener noreferrer">
+                {item.label}
+              </a>
+            </Fragment>
+          ))}
         </div>
       </div>
     </footer>
