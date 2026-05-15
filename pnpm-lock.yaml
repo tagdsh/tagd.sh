@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@betterdata/site-links':
-        specifier: file:../../betterdata.co/packages/site-links
-        version: file:../../betterdata.co/packages/site-links(lucide-react@0.577.0(react@19.2.3))(react@19.2.3)
+        specifier: file:./packages/site-links
+        version: file:packages/site-links(lucide-react@0.577.0(react@19.2.3))(react@19.2.3)
       gray-matter:
         specifier: ^4.0.3
         version: 4.0.3
@@ -143,8 +143,8 @@ packages:
     resolution: {integrity: sha512-LwdZHpScM4Qz8Xw2iKSzS+cfglZzJGvofQICy7W7v4caru4EaAmyUuO6BGrbyQ2mYV11W0U8j5mBhd14dd3B0A==}
     engines: {node: '>=6.9.0'}
 
-  '@betterdata/site-links@file:../../betterdata.co/packages/site-links':
-    resolution: {directory: ../../betterdata.co/packages/site-links, type: directory}
+  '@betterdata/site-links@file:packages/site-links':
+    resolution: {directory: packages/site-links, type: directory}
     peerDependencies:
       lucide-react: '>=0.400.0'
       react: '>=18.0.0'
@@ -2635,7 +2635,7 @@ snapshots:
       '@babel/helper-string-parser': 7.27.1
       '@babel/helper-validator-identifier': 7.28.5
 
-  '@betterdata/site-links@file:../../betterdata.co/packages/site-links(lucide-react@0.577.0(react@19.2.3))(react@19.2.3)':
+  '@betterdata/site-links@file:packages/site-links(lucide-react@0.577.0(react@19.2.3))(react@19.2.3)':
     dependencies:
       lucide-react: 0.577.0(react@19.2.3)
       react: 19.2.3
