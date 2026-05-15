@@ -9,8 +9,8 @@ export const GA_LINKER_DOMAINS = [
 ] as const;
 
 export function getGaMeasurementId(): string | undefined {
-  const id = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
-  return id || undefined;
+  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim();
+  return measurementId || undefined;
 }
 
 export function buildGtagInitScript(measurementId: string): string {
