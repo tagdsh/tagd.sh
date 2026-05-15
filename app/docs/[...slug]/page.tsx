@@ -57,6 +57,8 @@ export default async function DocPage({ params }: { params: Promise<{ slug: stri
     headline: doc.title,
     description: doc.description,
     url: `https://tagd.sh/docs/${doc.slugPath}`,
+    author: { "@type": "Organization", name: "Better Data", url: "https://betterdata.co" },
+    publisher: { "@type": "Organization", name: "Better Data", url: "https://betterdata.co" },
   };
 
   return (

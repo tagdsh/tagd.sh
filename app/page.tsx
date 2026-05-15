@@ -16,16 +16,24 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "Organization",
+      "@id": "https://betterdata.co/#organization",
+      name: "Better Data",
+      url: "https://betterdata.co",
+    },
+    {
       "@type": "SoftwareApplication",
       name: "Signal Tags",
       url: "https://tagd.sh",
       applicationCategory: "DeveloperApplication",
+      author: { "@id": "https://betterdata.co/#organization" },
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     },
     {
       "@type": "WebSite",
       name: "tagd.sh",
       url: "https://tagd.sh",
+      publisher: { "@id": "https://betterdata.co/#organization" },
     },
   ],
 };

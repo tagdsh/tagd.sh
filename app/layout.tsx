@@ -41,6 +41,19 @@ export const metadata: Metadata = {
   },
   description:
     "Signal Tags is an open schema and verification protocol for product authentication.",
+  authors: [{ name: "Better Data", url: "https://betterdata.co" }],
+  creator: "Better Data",
+  publisher: "Better Data",
+  openGraph: {
+    type: "website",
+    siteName: "Signal Tags",
+    url: "https://tagd.sh",
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@betterdatainc",
+    creator: "@betterdatainc",
+  },
 };
 
 export default function RootLayout({
